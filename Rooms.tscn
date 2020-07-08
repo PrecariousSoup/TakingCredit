@@ -1,0 +1,706 @@
+[gd_scene load_steps=42 format=2]
+
+[ext_resource path="res://assets/art/cage/cage_damage.png" type="Texture" id=1]
+[ext_resource path="res://Player.tscn" type="PackedScene" id=2]
+[ext_resource path="res://assets/art/rooms/room1/room1_bg.png" type="Texture" id=3]
+[ext_resource path="res://assets/art/rooms/room1/room1_floor.png" type="Texture" id=4]
+[ext_resource path="res://assets/art/rooms/room1/room1_platform.png" type="Texture" id=5]
+[ext_resource path="res://assets/art/rooms/room1/room1_fg.png" type="Texture" id=6]
+[ext_resource path="res://assets/art/cage/cage.png" type="Texture" id=7]
+[ext_resource path="res://Cage.gd" type="Script" id=8]
+[ext_resource path="res://assets/art/rooms/room2/room2_fg.png" type="Texture" id=9]
+[ext_resource path="res://assets/art/rooms/room2/room2_bg.png" type="Texture" id=10]
+[ext_resource path="res://assets/art/rooms/room5/room5.png" type="Texture" id=11]
+[ext_resource path="res://assets/art/rooms/room4/room4.png" type="Texture" id=12]
+[ext_resource path="res://assets/art/rooms/room3/room3.png" type="Texture" id=13]
+[ext_resource path="res://assets/art/rooms/room6/room6_fg.png" type="Texture" id=14]
+[ext_resource path="res://assets/art/rooms/room6/room6_bg.png" type="Texture" id=15]
+[ext_resource path="res://assets/fonts/pressstart2p_SMOL.tres" type="DynamicFont" id=16]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 65, 7 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 2, 45 )
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 9.5, 2 )
+
+[sub_resource type="SpriteFrames" id=4]
+animations = [ {
+"frames": [ ExtResource( 7 ) ],
+"loop": false,
+"name": "idle",
+"speed": 0.0
+}, {
+"frames": [ ExtResource( 1 ), ExtResource( 7 ), ExtResource( 1 ), ExtResource( 7 ) ],
+"loop": false,
+"name": "damage",
+"speed": 5.0
+} ]
+
+[sub_resource type="RectangleShape2D" id=5]
+extents = Vector2( 1.75, 13.5 )
+
+[sub_resource type="RectangleShape2D" id=6]
+extents = Vector2( 13, 1 )
+
+[sub_resource type="RectangleShape2D" id=7]
+extents = Vector2( 7, 1.5 )
+
+[sub_resource type="RectangleShape2D" id=8]
+extents = Vector2( 11.75, 2 )
+
+[sub_resource type="RectangleShape2D" id=9]
+extents = Vector2( 11.25, 1 )
+
+[sub_resource type="RectangleShape2D" id=10]
+extents = Vector2( 6, 1.5 )
+
+[sub_resource type="RectangleShape2D" id=11]
+extents = Vector2( 7.5, 1.5 )
+
+[sub_resource type="RectangleShape2D" id=12]
+extents = Vector2( 13.5, 1.5 )
+
+[sub_resource type="RectangleShape2D" id=13]
+extents = Vector2( 17, 8.5 )
+
+[sub_resource type="RectangleShape2D" id=14]
+extents = Vector2( 10, 1.5 )
+
+[sub_resource type="RectangleShape2D" id=15]
+extents = Vector2( 11.5, 7 )
+
+[sub_resource type="RectangleShape2D" id=16]
+extents = Vector2( 12.5, 1.5 )
+
+[sub_resource type="RectangleShape2D" id=17]
+extents = Vector2( 13.25, 4.5 )
+
+[sub_resource type="RectangleShape2D" id=18]
+extents = Vector2( 14.5, 4 )
+
+[sub_resource type="RectangleShape2D" id=19]
+extents = Vector2( 15, 6.5 )
+
+[sub_resource type="RectangleShape2D" id=20]
+extents = Vector2( 19.5, 2 )
+
+[sub_resource type="RectangleShape2D" id=21]
+extents = Vector2( 20, 2 )
+
+[sub_resource type="RectangleShape2D" id=22]
+extents = Vector2( 40.75, 2.5 )
+
+[sub_resource type="RectangleShape2D" id=23]
+extents = Vector2( 17, 2 )
+
+[sub_resource type="RectangleShape2D" id=24]
+extents = Vector2( 18.5, 12 )
+
+[sub_resource type="RectangleShape2D" id=25]
+extents = Vector2( 7.75, 4 )
+
+[node name="Rooms" type="Node2D"]
+scale = Vector2( 4, 4 )
+
+[node name="Room1" type="Node2D" parent="."]
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
+
+[node name="BG" type="StaticBody2D" parent="Room1"]
+z_index = -1
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="room1_bg" type="Sprite" parent="Room1/BG"]
+position = Vector2( 65, 45 )
+texture = ExtResource( 3 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Ceiling" type="CollisionShape2D" parent="Room1/BG"]
+position = Vector2( 64.75, -6.75 )
+shape = SubResource( 1 )
+
+[node name="Wall" type="CollisionShape2D" parent="Room1/BG"]
+position = Vector2( -2, 45 )
+shape = SubResource( 2 )
+
+[node name="Wall2" type="CollisionShape2D" parent="Room1/BG"]
+position = Vector2( 132, 45 )
+shape = SubResource( 2 )
+
+[node name="Room1Platform1" type="StaticBody2D" parent="Room1"]
+position = Vector2( 27, 44 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="room1_platform" type="Sprite" parent="Room1/Room1Platform1"]
+position = Vector2( -10, -2 )
+texture = ExtResource( 5 )
+centered = false
+
+[node name="platform_collission" type="CollisionShape2D" parent="Room1/Room1Platform1"]
+position = Vector2( -0.5, 0 )
+shape = SubResource( 3 )
+
+[node name="Room1Platform2" type="StaticBody2D" parent="Room1"]
+position = Vector2( 62, 34 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="room1_platform" type="Sprite" parent="Room1/Room1Platform2"]
+texture = ExtResource( 5 )
+
+[node name="Platform" type="CollisionShape2D" parent="Room1/Room1Platform2"]
+position = Vector2( -0.5, 0 )
+shape = SubResource( 3 )
+
+[node name="Room1Platform3" type="StaticBody2D" parent="Room1"]
+position = Vector2( 46, 57 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="room1_platform" type="Sprite" parent="Room1/Room1Platform3"]
+texture = ExtResource( 5 )
+
+[node name="Platform" type="CollisionShape2D" parent="Room1/Room1Platform3"]
+position = Vector2( -0.500004, -3.8147e-06 )
+shape = SubResource( 3 )
+
+[node name="Cage" type="StaticBody2D" parent="Room1"]
+position = Vector2( 88, 21 )
+script = ExtResource( 8 )
+
+[node name="LettersLabel" type="Label" parent="Room1/Cage"]
+margin_left = -9.0
+margin_top = 8.0
+margin_right = 10.0
+margin_bottom = 21.0
+rect_pivot_offset = Vector2( 475.25, 13.75 )
+custom_fonts/font = ExtResource( 16 )
+text = "ABCDEF"
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="Room1/Cage"]
+frames = SubResource( 4 )
+animation = "idle"
+
+[node name="chainHit" type="Area2D" parent="Room1/Cage"]
+
+[node name="ChainHit" type="CollisionShape2D" parent="Room1/Cage/chainHit"]
+position = Vector2( -0.5, -10 )
+shape = SubResource( 5 )
+
+[node name="CageStand" type="CollisionShape2D" parent="Room1/Cage"]
+position = Vector2( 0, 22 )
+shape = SubResource( 6 )
+
+[node name="FG" type="StaticBody2D" parent="Room1"]
+position = Vector2( 65, 45 )
+z_index = 1
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="room1_fg" type="Sprite" parent="Room1/FG"]
+texture = ExtResource( 6 )
+
+[node name="room1_floor" type="Sprite" parent="Room1/FG"]
+texture = ExtResource( 4 )
+
+[node name="Floor" type="CollisionShape2D" parent="Room1/FG"]
+position = Vector2( 0, 38 )
+shape = SubResource( 1 )
+
+[node name="PlayerStart" type="Position2D" parent="Room1"]
+position = Vector2( 32, 69 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Room2" type="Node2D" parent="."]
+position = Vector2( 200, 0 )
+
+[node name="BG" type="StaticBody2D" parent="Room2"]
+z_index = -1
+
+[node name="room2_bg" type="Sprite" parent="Room2/BG"]
+position = Vector2( 65, 45 )
+texture = ExtResource( 10 )
+
+[node name="Wall" type="CollisionShape2D" parent="Room2/BG"]
+position = Vector2( -2, 45 )
+shape = SubResource( 2 )
+
+[node name="Wall2" type="CollisionShape2D" parent="Room2/BG"]
+position = Vector2( 132, 45 )
+shape = SubResource( 2 )
+
+[node name="Platform1" type="StaticBody2D" parent="Room2"]
+position = Vector2( 27, 44 )
+
+[node name="platform_collission" type="CollisionShape2D" parent="Room2/Platform1"]
+position = Vector2( 40, -17.5 )
+shape = SubResource( 7 )
+
+[node name="platform_collission2" type="CollisionShape2D" parent="Room2/Platform1"]
+position = Vector2( -16.75, 7 )
+shape = SubResource( 8 )
+
+[node name="platform_collission3" type="CollisionShape2D" parent="Room2/Platform1"]
+position = Vector2( 21.5, 15 )
+shape = SubResource( 9 )
+
+[node name="platform_collission4" type="CollisionShape2D" parent="Room2/Platform1"]
+position = Vector2( 24, -5.5 )
+shape = SubResource( 10 )
+
+[node name="Cage" type="StaticBody2D" parent="Room2"]
+position = Vector2( 90, 21 )
+script = ExtResource( 8 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
+roomId = 2
+
+[node name="LettersLabel" type="Label" parent="Room2/Cage"]
+margin_left = -9.0
+margin_top = 7.5
+margin_right = 10.0
+margin_bottom = 20.5
+rect_pivot_offset = Vector2( 475.25, 13.75 )
+custom_fonts/font = ExtResource( 16 )
+text = "ABCDEF"
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="Room2/Cage"]
+frames = SubResource( 4 )
+animation = "idle"
+
+[node name="chainHit" type="Area2D" parent="Room2/Cage"]
+
+[node name="ChainHit" type="CollisionShape2D" parent="Room2/Cage/chainHit"]
+position = Vector2( -0.5, -10 )
+shape = SubResource( 5 )
+
+[node name="CageStand" type="CollisionShape2D" parent="Room2/Cage"]
+position = Vector2( 0, 22 )
+shape = SubResource( 6 )
+
+[node name="FG" type="StaticBody2D" parent="Room2"]
+position = Vector2( 65, 45 )
+z_index = 1
+
+[node name="room2_fg" type="Sprite" parent="Room2/FG"]
+texture = ExtResource( 9 )
+
+[node name="Ceiling" type="CollisionShape2D" parent="Room2/FG"]
+position = Vector2( 0, -41 )
+shape = SubResource( 1 )
+
+[node name="Floor" type="CollisionShape2D" parent="Room2/FG"]
+position = Vector2( 0, 38 )
+shape = SubResource( 1 )
+
+[node name="PlayerStart" type="Position2D" parent="Room2"]
+position = Vector2( 12, 69 )
+
+[node name="Room3" type="Node2D" parent="."]
+position = Vector2( 400, 0 )
+
+[node name="BG" type="StaticBody2D" parent="Room3"]
+z_index = -1
+
+[node name="room3_bg" type="Sprite" parent="Room3/BG"]
+position = Vector2( 65, 45 )
+texture = ExtResource( 13 )
+
+[node name="Wall" type="CollisionShape2D" parent="Room3/BG"]
+position = Vector2( -2, 45 )
+shape = SubResource( 2 )
+
+[node name="Wall2" type="CollisionShape2D" parent="Room3/BG"]
+position = Vector2( 132, 45 )
+shape = SubResource( 2 )
+
+[node name="Platform1" type="StaticBody2D" parent="Room3"]
+position = Vector2( 27, 44 )
+
+[node name="platform_collission" type="CollisionShape2D" parent="Room3/Platform1"]
+position = Vector2( 8.49997, -21.5 )
+shape = SubResource( 11 )
+
+[node name="platform_collission2" type="CollisionShape2D" parent="Room3/Platform1"]
+position = Vector2( 95.25, 7.5 )
+shape = SubResource( 12 )
+
+[node name="platform_collission3" type="CollisionShape2D" parent="Room3/Platform1"]
+position = Vector2( 41.75, 27.5 )
+shape = SubResource( 13 )
+
+[node name="platform_collission4" type="CollisionShape2D" parent="Room3/Platform1"]
+position = Vector2( 42, -4.5 )
+shape = SubResource( 14 )
+
+[node name="Cage" type="StaticBody2D" parent="Room3"]
+position = Vector2( 19.5, 21 )
+script = ExtResource( 8 )
+__meta__ = {
+"_edit_lock_": true
+}
+roomId = 3
+
+[node name="LettersLabel" type="Label" parent="Room3/Cage"]
+margin_left = -8.75
+margin_top = 7.5
+margin_right = 10.25
+margin_bottom = 20.5
+rect_pivot_offset = Vector2( 475.25, 13.75 )
+custom_fonts/font = ExtResource( 16 )
+text = "ABCDEF"
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="Room3/Cage"]
+frames = SubResource( 4 )
+animation = "idle"
+
+[node name="chainHit" type="Area2D" parent="Room3/Cage"]
+
+[node name="ChainHit" type="CollisionShape2D" parent="Room3/Cage/chainHit"]
+position = Vector2( -0.5, -10 )
+shape = SubResource( 5 )
+
+[node name="CageStand" type="CollisionShape2D" parent="Room3/Cage"]
+position = Vector2( 0, 22 )
+shape = SubResource( 6 )
+
+[node name="FG" type="StaticBody2D" parent="Room3"]
+position = Vector2( 65, 45 )
+z_index = 1
+
+[node name="Ceiling" type="CollisionShape2D" parent="Room3/FG"]
+position = Vector2( -3.05176e-05, -52.25 )
+shape = SubResource( 1 )
+
+[node name="Floor" type="CollisionShape2D" parent="Room3/FG"]
+position = Vector2( 0, 38 )
+shape = SubResource( 1 )
+
+[node name="PlayerStart" type="Position2D" parent="Room3"]
+position = Vector2( 12, 69 )
+
+[node name="Room4" type="Node2D" parent="."]
+position = Vector2( 600, 0 )
+
+[node name="BG" type="StaticBody2D" parent="Room4"]
+z_index = -1
+
+[node name="room4_bg" type="Sprite" parent="Room4/BG"]
+position = Vector2( 65, 45 )
+texture = ExtResource( 12 )
+
+[node name="Wall" type="CollisionShape2D" parent="Room4/BG"]
+position = Vector2( -2, 45 )
+shape = SubResource( 2 )
+
+[node name="Wall2" type="CollisionShape2D" parent="Room4/BG"]
+position = Vector2( 132, 45 )
+shape = SubResource( 2 )
+
+[node name="Platform1" type="StaticBody2D" parent="Room4"]
+position = Vector2( 27, 44 )
+
+[node name="platform_collission" type="CollisionShape2D" parent="Room4/Platform1"]
+position = Vector2( 84.5, -18 )
+shape = SubResource( 15 )
+
+[node name="platform_collission2" type="CollisionShape2D" parent="Room4/Platform1"]
+position = Vector2( 0.5, 6.5 )
+shape = SubResource( 16 )
+
+[node name="platform_collission3" type="CollisionShape2D" parent="Room4/Platform1"]
+position = Vector2( 37.25, 27.5 )
+shape = SubResource( 17 )
+
+[node name="platform_collission5" type="CollisionShape2D" parent="Room4/Platform1"]
+position = Vector2( 81.5, 28 )
+shape = SubResource( 18 )
+
+[node name="platform_collission4" type="CollisionShape2D" parent="Room4/Platform1"]
+position = Vector2( 49.75, -9.25 )
+shape = SubResource( 19 )
+
+[node name="Cage" type="StaticBody2D" parent="Room4"]
+position = Vector2( 11.25, 17.75 )
+script = ExtResource( 8 )
+__meta__ = {
+"_edit_group_": true
+}
+roomId = 2
+
+[node name="LettersLabel" type="Label" parent="Room4/Cage"]
+margin_left = -9.75
+margin_top = 7.25
+margin_right = 9.25
+margin_bottom = 20.25
+rect_pivot_offset = Vector2( 475.25, 13.75 )
+custom_fonts/font = ExtResource( 16 )
+text = "ABCDEF"
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="Room4/Cage"]
+frames = SubResource( 4 )
+animation = "idle"
+
+[node name="chainHit" type="Area2D" parent="Room4/Cage"]
+
+[node name="ChainHit" type="CollisionShape2D" parent="Room4/Cage/chainHit"]
+position = Vector2( -0.5, -10 )
+shape = SubResource( 5 )
+
+[node name="CageStand" type="CollisionShape2D" parent="Room4/Cage"]
+position = Vector2( 0, 22 )
+shape = SubResource( 6 )
+
+[node name="FG" type="StaticBody2D" parent="Room4"]
+position = Vector2( 65, 45 )
+z_index = 1
+
+[node name="Ceiling" type="CollisionShape2D" parent="Room4/FG"]
+position = Vector2( 0, -52 )
+shape = SubResource( 1 )
+
+[node name="Floor" type="CollisionShape2D" parent="Room4/FG"]
+position = Vector2( 0, 38 )
+shape = SubResource( 1 )
+
+[node name="PlayerStart" type="Position2D" parent="Room4"]
+position = Vector2( 12, 69 )
+
+[node name="Room5" type="Node2D" parent="."]
+position = Vector2( 800, 0 )
+
+[node name="BG" type="StaticBody2D" parent="Room5"]
+z_index = -1
+
+[node name="room5_bg" type="Sprite" parent="Room5/BG"]
+position = Vector2( 64.9999, 45 )
+texture = ExtResource( 11 )
+
+[node name="Wall" type="CollisionShape2D" parent="Room5/BG"]
+position = Vector2( -2, 45 )
+shape = SubResource( 2 )
+
+[node name="Wall2" type="CollisionShape2D" parent="Room5/BG"]
+position = Vector2( 132, 45 )
+shape = SubResource( 2 )
+
+[node name="Platform1" type="StaticBody2D" parent="Room5"]
+position = Vector2( 27, 44 )
+
+[node name="platform_collission" type="CollisionShape2D" parent="Room5/Platform1"]
+position = Vector2( -2.50006, -13 )
+shape = SubResource( 20 )
+
+[node name="platform_collission2" type="CollisionShape2D" parent="Room5/Platform1"]
+position = Vector2( -8.00006, 10 )
+shape = SubResource( 21 )
+
+[node name="platform_collission3" type="CollisionShape2D" parent="Room5/Platform1"]
+position = Vector2( 64.7499, 31.5 )
+shape = SubResource( 22 )
+
+[node name="platform_collission5" type="CollisionShape2D" parent="Room5/Platform1"]
+position = Vector2( 73.7499, 27.5 )
+shape = SubResource( 22 )
+
+[node name="platform_collission4" type="CollisionShape2D" parent="Room5/Platform1"]
+position = Vector2( 45.9999, -1 )
+shape = SubResource( 23 )
+
+[node name="Cage" type="StaticBody2D" parent="Room5"]
+position = Vector2( 115.5, 22.5 )
+script = ExtResource( 8 )
+__meta__ = {
+"_edit_lock_": true
+}
+roomId = 2
+
+[node name="LettersLabel" type="Label" parent="Room5/Cage"]
+margin_left = -9.25
+margin_top = 7.5
+margin_right = 9.75
+margin_bottom = 20.5
+rect_pivot_offset = Vector2( 475.25, 13.75 )
+custom_fonts/font = ExtResource( 16 )
+text = "ABCDEF"
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="Room5/Cage"]
+frames = SubResource( 4 )
+animation = "idle"
+
+[node name="chainHit" type="Area2D" parent="Room5/Cage"]
+
+[node name="ChainHit" type="CollisionShape2D" parent="Room5/Cage/chainHit"]
+position = Vector2( -0.5, -10 )
+shape = SubResource( 5 )
+
+[node name="CageStand" type="CollisionShape2D" parent="Room5/Cage"]
+position = Vector2( 0, 22 )
+shape = SubResource( 6 )
+
+[node name="FG" type="StaticBody2D" parent="Room5"]
+position = Vector2( 65, 45 )
+z_index = 1
+
+[node name="Ceiling" type="CollisionShape2D" parent="Room5/FG"]
+position = Vector2( -6.10352e-05, -51.75 )
+shape = SubResource( 1 )
+
+[node name="Floor" type="CollisionShape2D" parent="Room5/FG"]
+position = Vector2( -6.10352e-05, 39 )
+shape = SubResource( 1 )
+
+[node name="PlayerStart" type="Position2D" parent="Room5"]
+position = Vector2( 12, 69 )
+
+[node name="Room6" type="Node2D" parent="."]
+position = Vector2( 1000, 0 )
+
+[node name="BG" type="StaticBody2D" parent="Room6"]
+z_index = -1
+
+[node name="room6_bg" type="Sprite" parent="Room6/BG"]
+position = Vector2( 65, 45 )
+texture = ExtResource( 15 )
+
+[node name="Wall" type="CollisionShape2D" parent="Room6/BG"]
+position = Vector2( -2, 45 )
+shape = SubResource( 2 )
+
+[node name="Wall2" type="CollisionShape2D" parent="Room6/BG"]
+position = Vector2( 132, 45 )
+shape = SubResource( 2 )
+
+[node name="Platform1" type="StaticBody2D" parent="Room6"]
+position = Vector2( 27, 44 )
+
+[node name="platform_collission2" type="CollisionShape2D" parent="Room6/Platform1"]
+position = Vector2( 75.5, 21 )
+shape = SubResource( 24 )
+
+[node name="platform_collission3" type="CollisionShape2D" parent="Room6/Platform1"]
+position = Vector2( 25.5, 10 )
+shape = SubResource( 9 )
+
+[node name="platform_collission4" type="CollisionShape2D" parent="Room6/Platform1"]
+position = Vector2( 25.5, 5 )
+shape = SubResource( 25 )
+
+[node name="Cage" type="StaticBody2D" parent="Room6"]
+position = Vector2( 14.9999, 34.5 )
+script = ExtResource( 8 )
+roomId = 2
+
+[node name="LettersLabel" type="Label" parent="Room6/Cage"]
+margin_left = -8.25
+margin_top = 7.75
+margin_right = 10.75
+margin_bottom = 20.75
+rect_pivot_offset = Vector2( 475.25, 13.75 )
+custom_fonts/font = ExtResource( 16 )
+text = "ABCDEF"
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="Room6/Cage"]
+frames = SubResource( 4 )
+animation = "idle"
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="chainHit" type="Area2D" parent="Room6/Cage"]
+
+[node name="ChainHit" type="CollisionShape2D" parent="Room6/Cage/chainHit"]
+position = Vector2( -0.5, -10 )
+shape = SubResource( 5 )
+
+[node name="room6_fg" type="Sprite" parent="Room6/Cage"]
+position = Vector2( 50.0001, 10.5 )
+texture = ExtResource( 14 )
+
+[node name="CageStand" type="CollisionShape2D" parent="Room6/Cage"]
+position = Vector2( 0, 22 )
+shape = SubResource( 6 )
+
+[node name="FG" type="StaticBody2D" parent="Room6"]
+position = Vector2( 65, 45 )
+z_index = 1
+
+[node name="Ceiling" type="CollisionShape2D" parent="Room6/FG"]
+position = Vector2( 0, -41 )
+shape = SubResource( 1 )
+
+[node name="Floor" type="CollisionShape2D" parent="Room6/FG"]
+position = Vector2( 0, 38 )
+shape = SubResource( 1 )
+
+[node name="PlayerStart" type="Position2D" parent="Room6"]
+position = Vector2( 12, 69 )
+
+[node name="Player" parent="." instance=ExtResource( 2 )]
+position = Vector2( 202.75, 69.25 )
+[connection signal="cage_destroyed" from="Room1/Cage" to="Player" method="_on_Cage_cage_destroyed"]
+[connection signal="animation_finished" from="Room1/Cage/AnimatedSprite" to="Room1/Cage" method="_on_AnimatedSprite_animation_finished"]
+[connection signal="area_shape_entered" from="Room1/Cage/chainHit" to="Room1/Cage" method="_on_ChainHit2_area_shape_entered"]
+[connection signal="body_entered" from="Room1/Cage/chainHit" to="Room1/Cage" method="_on_ChainHit2_body_entered"]
+[connection signal="cage_destroyed" from="Room2/Cage" to="Player" method="_on_Cage_cage_destroyed"]
+[connection signal="animation_finished" from="Room2/Cage/AnimatedSprite" to="Room2/Cage" method="_on_AnimatedSprite_animation_finished"]
+[connection signal="area_shape_entered" from="Room2/Cage/chainHit" to="Room2/Cage" method="_on_ChainHit2_area_shape_entered"]
+[connection signal="body_entered" from="Room2/Cage/chainHit" to="Room2/Cage" method="_on_ChainHit2_body_entered"]
+[connection signal="cage_destroyed" from="Room3/Cage" to="Player" method="_on_Cage_cage_destroyed"]
+[connection signal="animation_finished" from="Room3/Cage/AnimatedSprite" to="Room3/Cage" method="_on_AnimatedSprite_animation_finished"]
+[connection signal="area_shape_entered" from="Room3/Cage/chainHit" to="Room3/Cage" method="_on_ChainHit2_area_shape_entered"]
+[connection signal="body_entered" from="Room3/Cage/chainHit" to="Room3/Cage" method="_on_ChainHit2_body_entered"]
+[connection signal="cage_destroyed" from="Room4/Cage" to="Player" method="_on_Cage_cage_destroyed"]
+[connection signal="animation_finished" from="Room4/Cage/AnimatedSprite" to="Room4/Cage" method="_on_AnimatedSprite_animation_finished"]
+[connection signal="area_shape_entered" from="Room4/Cage/chainHit" to="Room4/Cage" method="_on_ChainHit2_area_shape_entered"]
+[connection signal="body_entered" from="Room4/Cage/chainHit" to="Room4/Cage" method="_on_ChainHit2_body_entered"]
+[connection signal="cage_destroyed" from="Room5/Cage" to="Player" method="_on_Cage_cage_destroyed"]
+[connection signal="animation_finished" from="Room5/Cage/AnimatedSprite" to="Room5/Cage" method="_on_AnimatedSprite_animation_finished"]
+[connection signal="area_shape_entered" from="Room5/Cage/chainHit" to="Room5/Cage" method="_on_ChainHit2_area_shape_entered"]
+[connection signal="body_entered" from="Room5/Cage/chainHit" to="Room5/Cage" method="_on_ChainHit2_body_entered"]
+[connection signal="cage_destroyed" from="Room6/Cage" to="Player" method="_on_Cage_cage_destroyed"]
+[connection signal="animation_finished" from="Room6/Cage/AnimatedSprite" to="Room6/Cage" method="_on_AnimatedSprite_animation_finished"]
+[connection signal="area_shape_entered" from="Room6/Cage/chainHit" to="Room6/Cage" method="_on_ChainHit2_area_shape_entered"]
+[connection signal="body_entered" from="Room6/Cage/chainHit" to="Room6/Cage" method="_on_ChainHit2_body_entered"]

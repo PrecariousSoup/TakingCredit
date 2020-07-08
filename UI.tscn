@@ -1,0 +1,27 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://assets/fonts/pressstart2p.tres" type="DynamicFont" id=2]
+[ext_resource path="res://UI.gd" type="Script" id=3]
+
+[node name="UI" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -2.11896
+margin_top = 1.05945
+margin_right = -2.11896
+margin_bottom = 1.05945
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ScoreText" type="Label" parent="."]
+margin_left = 62.5017
+margin_right = 307.502
+margin_bottom = 64.0
+custom_fonts/font = ExtResource( 2 )
+text = "letters"
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
